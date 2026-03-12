@@ -24,6 +24,47 @@
 - [语音密钥配置模板](voice-secrets.example.json)
 - [内置 persona 模板](personas/README.md)
 
+## Quick Start
+
+默认你已经：
+
+- 装好了 OpenClaw
+- 装好了 NapCat
+- 用闲置 QQ 号登录成功
+
+最短上手路径：
+
+```bash
+openclaw plugins install @kirigaya/openclaw-onebot
+openclaw onebot setup
+openclaw onebot bootstrap-personas
+openclaw gateway restart
+```
+
+然后：
+
+1. 私聊你的 QQ 机器人发一句话
+2. 或把它拉进群里后 `@` 它
+3. 试试：
+
+```text
+@bot 你有哪些人格
+@bot /switch laoge
+@bot 请用语音和我聊天
+```
+
+这套默认会创建并启用：
+
+- `life-normal`
+- `life-gentle`
+- `life-laoge`
+- `life-lezige`
+
+如果你只想先跑最小链路，不需要立刻手改 `openclaw.json`。  
+只有当你要按群 / 私聊细分人格路由、改模型、改音色时，再去看：
+
+- [多人格与 openclaw.json 配置说明](docs/personas-and-openclaw-config.md)
+
 ## 项目定位
 
 这套插件选择的是 **NapCat + 真实 QQ 号** 路线，而不是官方 QQ Bot 路线。
