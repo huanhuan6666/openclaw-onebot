@@ -30,6 +30,10 @@ export default function register(api) {
                     const { runOneBotSetup } = await import("./setup.js");
                     await runOneBotSetup();
                 });
+                onebot.command("bootstrap-personas").description("安装预设的 onebot persona agents（life-normal / gentle / laoge / lezige）").action(async () => {
+                    const { runOneBotPersonaBootstrap } = await import("./bootstrap.js");
+                    await runOneBotPersonaBootstrap();
+                });
             }
         }, { commands: ["onebot"] });
     }

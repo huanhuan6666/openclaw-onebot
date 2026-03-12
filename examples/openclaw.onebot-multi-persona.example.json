@@ -40,7 +40,6 @@
         "workspace": "/home/you/.openclaw/workspace-life-normal",
         "agentDir": "/home/you/.openclaw/agents/life-normal/agent",
         "model": "openai-hk/gemini-3-flash-preview",
-        "skills": ["soul-switch", "tavily"],
         "tools": {
           "allow": [
             "group:fs",
@@ -61,7 +60,6 @@
         "workspace": "/home/you/.openclaw/workspace-life-gentle",
         "agentDir": "/home/you/.openclaw/agents/life-gentle/agent",
         "model": "openai-hk/gemini-3-flash-preview",
-        "skills": ["soul-switch", "tavily"],
         "tools": {
           "allow": [
             "group:fs",
@@ -82,7 +80,6 @@
         "workspace": "/home/you/.openclaw/workspace-life-laoge",
         "agentDir": "/home/you/.openclaw/agents/life-laoge/agent",
         "model": "openai-hk/gemini-3-flash-preview",
-        "skills": ["soul-switch", "tavily"],
         "tools": {
           "allow": [
             "group:fs",
@@ -103,7 +100,6 @@
         "workspace": "/home/you/.openclaw/workspace-life-lezige",
         "agentDir": "/home/you/.openclaw/agents/life-lezige/agent",
         "model": "openai-hk/gemini-3-flash-preview",
-        "skills": ["soul-switch", "tavily"],
         "tools": {
           "allow": [
             "group:fs",

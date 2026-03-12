@@ -6,7 +6,7 @@
 它不是单纯的“消息转发器”，而是把 **真实 QQ 号**、**多人格 agent**、**群聊上下文承接**、**语音输入输出**、**QQ 表情生态** 真正接成一个可长期运行的 QQ 角色。
 
 [![npm version](https://img.shields.io/npm/v/@kirigaya/openclaw-onebot?style=flat-square)](https://www.npmjs.com/package/@kirigaya/openclaw-onebot)
-[![GitHub stars](https://img.shields.io/github/stars/LSTM-Kirigaya/openclaw-onebot?style=flat-square)](https://github.com/LSTM-Kirigaya/openclaw-onebot)
+[![GitHub stars](https://img.shields.io/github/stars/huanhuan6666/openclaw-onebot?style=flat-square)](https://github.com/huanhuan6666/openclaw-onebot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen?style=flat-square)](https://nodejs.org)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Plugin-9cf?style=flat-square)](https://openclaw.ai)
@@ -308,9 +308,26 @@ QQ `record` 消息进入 onebot 插件后，会转成媒体附件，再走 OpenC
 ```bash
 openclaw plugins install @kirigaya/openclaw-onebot
 openclaw onebot setup
+openclaw onebot bootstrap-personas
 ```
 
 OneBot 服务端推荐使用 NapCat。
+
+如果你只想快速体验，推荐按这个顺序：
+
+1. `openclaw plugins install @kirigaya/openclaw-onebot`
+2. `openclaw onebot setup`
+3. `openclaw onebot bootstrap-personas`
+4. `openclaw gateway restart`
+5. 用闲置 QQ 号私聊或群聊 `@` 机器人测试
+
+其中：
+
+- `setup` 负责 onebot 连接参数
+- `setup` 结束时也会顺带询问是否安装预设人格；如果当时跳过，后面还能单独运行 `bootstrap-personas`
+- `bootstrap-personas` 负责创建内置的 `life-normal / life-gentle / life-laoge / life-lezige`
+- bootstrap 会优先继承你当前 onebot 默认 agent 的 workspace 结构、skills 和 tools
+- 如果你是纯新环境，它也会生成最小可用的 `life-*` 目录骨架
 
 参考：
 
@@ -328,9 +345,10 @@ OneBot 服务端推荐使用 NapCat。
 
 1. 安装并配置 NapCat
 2. 安装插件并完成 `openclaw onebot setup`
-3. 重启 gateway
-4. 使用 QQ 私聊或群聊测试
-5. 如需多人格，创建多个 `life-*` agent 并通过 binding 路由
+3. 运行 `openclaw onebot bootstrap-personas`
+4. 重启 gateway
+5. 使用 QQ 私聊或群聊测试
+6. 如需更细的群/私聊人格路由，再手工调整 `bindings`
 
 ## 典型配置思路
 
@@ -467,4 +485,4 @@ OpenClaw 自带 `historyLimit / dmHistoryLimit`。
 
 ## License
 
-MIT © [LSTM-Kirigaya](https://github.com/LSTM-Kirigaya)
+MIT

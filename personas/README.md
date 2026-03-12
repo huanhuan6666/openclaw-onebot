@@ -2,7 +2,15 @@
 
 这个目录存放的是可直接复用的 persona `SOUL.md` 模板。
 
-推荐用法：
+推荐优先用插件自带的一键初始化：
+
+```bash
+openclaw onebot bootstrap-personas
+```
+
+这个命令会自动把这些模板安装到你的 `~/.openclaw/workspace-life-*`。
+
+如果你想完全手工控制目录结构，再用下面这套手动方式：
 
 1. 选择一个 persona 模板
 2. 复制到你自己的 OpenClaw workspace

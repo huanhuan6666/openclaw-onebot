@@ -102,17 +102,36 @@ lifeagent
 
 ### 3. 安装步骤
 
-告诉用户：
+推荐优先走插件自带的一键初始化：
 
-- 这些 persona 模板应该复制到哪里
-- 对应的 `agentDir` / `workspace` 应该如何命名
-- `bindings` 怎么写
+```bash
+openclaw onebot bootstrap-personas
+```
+
+这个命令会自动：
+
+- 创建 `life-normal / life-gentle / life-laoge / life-lezige`
+- 创建对应的 `workspace-life-*`
+- 把仓库里的 persona 模板复制成各自的 `SOUL.md`
+- 创建 `~/.openclaw/agents/life-*/agent`
+- 尽量继承你当前 onebot 默认 agent 的 workspace 结构、skills 和 tools
+- 可选把 onebot 默认绑定切到 `life-normal`
 
 ---
 
 ## 4. 用户如何“安装”这些人格
 
-最直接的方式是手动复制。
+默认推荐：
+
+```bash
+openclaw onebot bootstrap-personas
+```
+
+如果你只是想快速体验，运行完这个命令后再重启 gateway 就够了。
+
+只有当你想完全手工控制目录结构时，才需要走下面这套手动方式。
+
+### 高级用法：手动复制
 
 例如你要安装 `life-laoge`：
 
@@ -150,8 +169,7 @@ mkdir -p ~/.openclaw/agents/life-laoge/agent
         "id": "life-laoge",
         "workspace": "/home/you/.openclaw/workspace-life-laoge",
         "agentDir": "/home/you/.openclaw/agents/life-laoge/agent",
-        "model": "openai-hk/gemini-3-flash-preview",
-        "skills": ["soul-switch", "tavily"]
+        "model": "openai-hk/gemini-3-flash-preview"
       }
     ]
   }
@@ -315,7 +333,6 @@ mkdir -p ~/.openclaw/agents/life-laoge/agent
         "workspace": "/home/you/.openclaw/workspace-life-normal",
         "agentDir": "/home/you/.openclaw/agents/life-normal/agent",
         "model": "openai-hk/gemini-3-flash-preview",
-        "skills": ["soul-switch", "tavily"],
         "tools": {
           "allow": [
             "group:fs",
@@ -495,15 +512,13 @@ mkdir -p ~/.openclaw/agents/life-laoge/agent
         "id": "life-normal",
         "workspace": "/home/you/.openclaw/workspace-life-normal",
         "agentDir": "/home/you/.openclaw/agents/life-normal/agent",
-        "model": "openai-hk/gemini-3-flash-preview",
-        "skills": ["soul-switch", "tavily"]
+        "model": "openai-hk/gemini-3-flash-preview"
       },
       {
         "id": "life-laoge",
         "workspace": "/home/you/.openclaw/workspace-life-laoge",
         "agentDir": "/home/you/.openclaw/agents/life-laoge/agent",
-        "model": "openai-hk/gemini-3-flash-preview",
-        "skills": ["soul-switch", "tavily"]
+        "model": "openai-hk/gemini-3-flash-preview"
       }
     ]
   },
@@ -534,11 +549,10 @@ mkdir -p ~/.openclaw/agents/life-laoge/agent
 给新用户最好的顺序是：
 
 1. 先把 onebot 通道跑通
-2. 只保留一个 `life-normal`
-3. 确认群聊 / 私聊都能正常回复
-4. 再复制 `SOUL_laoge.md`、`SOUL_gentle.md` 等模板
-5. 再在 `agents.list` 和 `bindings` 里扩展多 persona
-6. 最后再配语音音色和自然语言切人格
+2. 运行 `openclaw onebot bootstrap-personas`
+3. 确认私聊 / 群聊都能正常回复
+4. 再按需要调整 `bindings`
+5. 最后再配语音音色、活跃参与参数和其他 skills
 
 不要一上来就把所有 persona、voice、skills 全部堆进去。
 

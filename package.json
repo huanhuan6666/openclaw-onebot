@@ -4,15 +4,15 @@
   "description": "OneBot v11 protocol channel plugin for OpenClaw (QQ/Lagrange.Core/go-cqhttp)",
   "license": "MIT",
   "publishConfig": { "access": "public" },
-  "author": "LSTM-Kirigaya",
+  "author": "huanhuan6666",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LSTM-Kirigaya/openclaw-onebot.git"
+    "url": "https://github.com/huanhuan6666/openclaw-onebot.git"
   },
   "bugs": {
-    "url": "https://github.com/LSTM-Kirigaya/openclaw-onebot/issues"
+    "url": "https://github.com/huanhuan6666/openclaw-onebot/issues"
   },
-  "homepage": "https://github.com/LSTM-Kirigaya/openclaw-onebot#readme",
+  "homepage": "https://github.com/huanhuan6666/openclaw-onebot#readme",
   "keywords": [
     "openclaw",
     "onebot",
@@ -26,14 +26,19 @@
   "exports": "./dist/index.js",
   "files": [
     "dist",
+    "docs",
+    "examples",
     "face-map.json",
+    "personas",
     "skills",
     "openclaw.plugin.json",
-    "README.md"
+    "README.md",
+    "voice-profiles.json",
+    "voice-secrets.example.json"
   ],
   "openclaw": {
     "extensions": ["./dist/index.js"],
-    "skills": ["skills/onebot-ops", "skills/onebot-scripts"],
+    "skills": ["skills/onebot-ops"],
     "channel": {
       "id": "onebot",
       "label": "OneBot",

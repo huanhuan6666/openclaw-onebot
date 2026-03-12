@@ -92,5 +92,15 @@ export async function runOneBotSetup() {
     const next = { ...existing, channels };
     writeFileSync(CONFIG_PATH, JSON.stringify(next, null, 2), "utf-8");
     clackNote(`配置已保存到 ${CONFIG_PATH}`, "完成");
-    clackOutro("运行 openclaw gateway restart 使配置生效");
+    const installPresetPersonas = guardCancel(await clackConfirm({
+        message: "是否顺手安装内置的预设人格（life-normal / gentle / laoge / lezige）？",
+        initialValue: true,
+    }));
+    if (installPresetPersonas) {
+        const { runOneBotPersonaBootstrap } = await import("./bootstrap.js");
+        await runOneBotPersonaBootstrap();
+    }
+    else {
+        clackOutro("运行 openclaw gateway restart 使配置生效");
+    }
 }

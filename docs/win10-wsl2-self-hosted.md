@@ -153,6 +153,28 @@ openclaw plugins link .
 openclaw onebot setup
 ```
 
+`openclaw onebot setup` 的最后也会顺带问你要不要安装这些预设人格。
+
+如果你想直接装好仓库内置的 4 个预设人格，再执行：
+
+```bash
+openclaw onebot bootstrap-personas
+```
+
+这个命令会自动创建：
+
+- `life-normal`
+- `life-gentle`
+- `life-laoge`
+- `life-lezige`
+
+以及它们各自的：
+
+- `~/.openclaw/workspace-life-*`
+- `~/.openclaw/agents/life-*/agent`
+
+如果你当前已经有一个可用的 onebot 默认 agent，bootstrap 会尽量继承它的 workspace 结构、skills 和 tools。
+
 ---
 
 ## 7. 在 Windows 上安装 NapCat
@@ -329,6 +351,16 @@ openclaw gateway start
 ---
 
 ## 14. 配置多人格
+
+如果你已经运行过：
+
+```bash
+openclaw onebot bootstrap-personas
+```
+
+那么这一步通常已经自动完成了。你只需要检查 `bindings` 是否符合自己的预期。
+
+只有当你想手工增删人格、或者自己设计新的 persona 时，才需要继续手改 `agents.list`。
 
 当前这套方案推荐每个人格一个独立 agent / workspace。
 
