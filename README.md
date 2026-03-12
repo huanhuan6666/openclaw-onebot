@@ -5,7 +5,6 @@
 一个基于 **NapCat / OneBot + OpenClaw** 的 QQ 渠道插件。  
 它不是单纯的“消息转发器”，而是把 **真实 QQ 号**、**多人格 agent**、**群聊上下文承接**、**语音输入输出**、**QQ 表情生态** 真正接成一个可长期运行的 QQ 角色。
 
-[![npm version](https://img.shields.io/npm/v/@kirigaya/openclaw-onebot?style=flat-square)](https://www.npmjs.com/package/@kirigaya/openclaw-onebot)
 [![GitHub stars](https://img.shields.io/github/stars/huanhuan6666/openclaw-onebot?style=flat-square)](https://github.com/huanhuan6666/openclaw-onebot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen?style=flat-square)](https://nodejs.org)
@@ -24,6 +23,22 @@
 - [语音密钥配置模板](voice-secrets.example.json)
 - [内置 persona 模板](personas/README.md)
 
+## 项目关系
+
+本仓库是基于上游 [LSTM-Kirigaya/openclaw-onebot](https://github.com/LSTM-Kirigaya/openclaw-onebot) 的二次开发增强版。
+
+上游项目已经提供了完整的 OneBot / QQ 接入基础能力与安装思路；本仓库在这个基础上继续做了更偏“真实 QQ 号人格 agent”方向的增强，重点包括：
+
+- 预设 persona 一键初始化：`openclaw onebot bootstrap-personas`
+- `life-*` 多人格并行路由，而不是反复覆盖同一份 `SOUL.md`
+- 群聊 recent context 承接与活跃参与
+- QQ 语音输入输出完整打通
+- Fish Audio `s2-pro` + 二次语气标注
+- QQ 黄脸、`mface`、reply、图片 recent context 描述等交互层增强
+
+如果你只是想用上游原版通道插件，可以直接参考上游 README。  
+如果你想体验本仓库这套“多人格 + 语音 + 群聊现场感”的增强版，请按下面的源码安装方式来。
+
 ## Quick Start
 
 默认你已经：
@@ -35,7 +50,10 @@
 最短上手路径：
 
 ```bash
-openclaw plugins install @kirigaya/openclaw-onebot
+git clone https://github.com/huanhuan6666/openclaw-onebot.git
+cd openclaw-onebot
+npm install
+openclaw plugins link .
 openclaw onebot setup
 openclaw onebot bootstrap-personas
 openclaw gateway restart
@@ -347,20 +365,31 @@ QQ `record` 消息进入 onebot 插件后，会转成媒体附件，再走 OpenC
 ## 安装
 
 ```bash
-openclaw plugins install @kirigaya/openclaw-onebot
+git clone https://github.com/huanhuan6666/openclaw-onebot.git
+cd openclaw-onebot
+npm install
+openclaw plugins link .
 openclaw onebot setup
 openclaw onebot bootstrap-personas
 ```
 
 OneBot 服务端推荐使用 NapCat。
 
+说明：
+
+- 当前 README 默认介绍的是 **本仓库这份增强版** 的安装方式
+- `@kirigaya/openclaw-onebot` 是上游包名，不应在这里冒充成本仓库的发布包
+- 如果你后面要把这份增强版正式发 npm，建议换成你自己的包名 / scope
+
 如果你只想快速体验，推荐按这个顺序：
 
-1. `openclaw plugins install @kirigaya/openclaw-onebot`
-2. `openclaw onebot setup`
-3. `openclaw onebot bootstrap-personas`
-4. `openclaw gateway restart`
-5. 用闲置 QQ 号私聊或群聊 `@` 机器人测试
+1. `git clone https://github.com/huanhuan6666/openclaw-onebot.git`
+2. `npm install`
+3. `openclaw plugins link .`
+4. `openclaw onebot setup`
+5. `openclaw onebot bootstrap-personas`
+6. `openclaw gateway restart`
+7. 用闲置 QQ 号私聊或群聊 `@` 机器人测试
 
 其中：
 

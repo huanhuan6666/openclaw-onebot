@@ -133,13 +133,22 @@ openclaw --version
 
 ## 6. 安装本插件
 
-如果走 npm 包：
+推荐直接使用本仓库源码安装，因为这里介绍的是这份增强版 fork，而不是上游 npm 包。
 
 ```bash
-openclaw plugins install @kirigaya/openclaw-onebot
+git clone https://github.com/huanhuan6666/openclaw-onebot.git
+cd openclaw-onebot
+npm install
+openclaw plugins link .
 ```
 
-如果你是从本地源码开发：
+如果你只是想体验上游原版插件，再去看上游仓库：
+
+```text
+https://github.com/LSTM-Kirigaya/openclaw-onebot
+```
+
+如果你是从本地源码开发，也可以直接：
 
 ```bash
 cd /path/to/openclaw-onebot
