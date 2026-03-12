@@ -1,0 +1,10 @@
+node_modules/
+
+history-debug.log
+prompt-debug/
+voice-debug/
+
+voice-secrets.json
+voice-state.json
+
+.DS_Store

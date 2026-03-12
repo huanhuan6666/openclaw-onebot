@@ -1,0 +1,67 @@
+{
+  "default": {
+    "provider": "edge",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "lang": "zh-CN",
+    "outputFormat": "audio-24khz-48kbitrate-mono-mp3",
+    "maxTextLength": 1200
+  },
+  "agents": {
+    "life-gentle": {
+      "provider": "fishaudio",
+      "voice": "918a8277663d476b95e2c4867da0f6a6",
+      "model": "s2-pro",
+      "format": "mp3",
+      "latency": "balanced",
+      "annotation": {
+        "enabled": true,
+        "provider": "openai-hk",
+        "model": "gpt-5-nano",
+        "maxCues": 3,
+        "temperature": 0.2
+      }
+    },
+    "life-normal": {
+      "provider": "fishaudio",
+      "referenceId": "5c353fdb312f4888836a9a5680099ef0",
+      "model": "s2-pro",
+      "format": "mp3",
+      "latency": "balanced",
+      "annotation": {
+        "enabled": true,
+        "provider": "openai-hk",
+        "model": "gpt-5-nano",
+        "maxCues": 3,
+        "temperature": 0.2
+      }
+    },
+    "life-laoge": {
+      "provider": "fishaudio",
+      "referenceId": "e80ea225770f42f79d50aa98be3cedfc",
+      "model": "s2-pro",
+      "format": "mp3",
+      "latency": "balanced",
+      "annotation": {
+        "enabled": true,
+        "provider": "openai-hk",
+        "model": "gpt-5-nano",
+        "maxCues": 3,
+        "temperature": 0.2
+      }
+    },
+    "life-lezige": {
+      "provider": "fishaudio",
+      "referenceId": "54a5170264694bfc8e9ad98df7bd89c3",
+      "model": "s2-pro",
+      "format": "mp3",
+      "latency": "balanced",
+      "annotation": {
+        "enabled": true,
+        "provider": "openai-hk",
+        "model": "gpt-5-nano",
+        "maxCues": 3,
+        "temperature": 0.2
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "id": "openclaw-onebot",
+  "name": "OneBot Channel",
+  "version": "1.0.1",
+  "description": "OneBot v11 protocol channel (QQ/Lagrange.Core via WebSocket)",
+  "author": "Lagrange.Onebot",
+  "channels": ["onebot"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": ["forward-websocket", "backward-websocket"],
+        "description": "连接类型：正向或反向 WebSocket"
+      },
+      "host": { "type": "string", "description": "OneBot 主机地址" },
+      "port": { "type": "number", "description": "OneBot 端口" },
+      "accessToken": { "type": "string", "description": "访问令牌（可选）" },
+      "path": { "type": "string", "description": "WS 路径，默认 /onebot/v11/ws" },
+      "requireMention": {
+        "type": "boolean",
+        "default": true,
+        "description": "群聊是否必须 @ 机器人才回复"
+      },
+      "whitelistUserIds": {
+        "type": "array",
+        "items": { "type": "number" },
+        "description": "白名单 QQ 号，非空时仅白名单内用户可触发 AI；为空则所有人可回复"
+      },
+      "renderMarkdownToPlain": {
+        "type": "boolean",
+        "default": true,
+        "description": "是否将机器人回复中的 Markdown 渲染为纯文本再发送（去除 **、# 等标记）"
+      },
+      "groupIncrease": {
+        "type": "object",
+        "properties": {
+          "enabled": { "type": "boolean", "default": false },
+          "message": {
+            "type": "string",
+            "description": "欢迎语模板。占位符：{name} 新成员昵称，{userId} QQ号，{groupName} 群名，{groupId} 群号，{avatarUrl} 头像链接"
+          },
+          "command": {
+            "type": "string",
+            "description": "在 cwd 下用系统 shell 执行的命令。调用方自动追加 --userId、--username、--groupId 参数。命令可自行发送（如调用 openclaw message send），或向 stdout 输出 JSON 行供 handler 发送"
+          },
+          "cwd": {
+            "type": "string",
+            "description": "命令执行的工作目录（绝对路径）"
+          }
+        }
+      },
+      "thinkingEmojiId": {
+        "type": "number",
+        "default": 60,
+        "description": "表情 ID（Lagrange/QQ NT set_msg_emoji_like），收到消息时添加，回复完成后取消"
+      },
+      "onReplySessionEnd": {
+        "type": "string",
+        "description": "回复会话结束时的钩子脚本路径（.mjs/.ts/.mts）。脚本接收 ctx: { replySessionId, sessionId, to, chunks, userMessage }，可对同一问题下的多次发送做统一处理（如日志、合并、上报等）"
+      },
+      "longMessageMode": {
+        "type": "string",
+        "enum": ["normal", "og_image", "forward"],
+        "default": "normal",
+        "description": "长消息处理模式：normal 正常发送；og_image 生成图片（需 node-html-to-image）；forward 合并转发"
+      },
+      "longMessageThreshold": {
+        "type": "number",
+        "default": 300,
+        "description": "长消息阈值（字符数），超过则启用 longMessageMode"
+      },
+      "cronJobs": {
+        "type": "array",
+        "description": "内置定时任务（无 AI 介入，直接执行脚本并推送到群聊）",
+        "items": {
+          "type": "object",
+          "required": ["name", "cron", "script", "groupIds"],
+          "properties": {
+            "name": { "type": "string", "description": "任务名称" },
+            "cron": { "type": "string", "description": "cron 表达式，如 0 8 * * * 表示每天 8:00" },
+            "timezone": { "type": "string", "default": "Asia/Shanghai", "description": "时区" },
+            "script": { "type": "string", "description": "脚本路径，相对 process.cwd()，如 ./Tiphareth/src/openclaw/cron/daily-news.ts" },
+            "groupIds": {
+              "type": "array",
+              "items": { "type": "number" },
+              "description": "要推送的群号列表"
+            }
+          }
+        }
+      }
+    }
+  },
+  "uiHints": {
+    "accessToken": { "label": "Access Token", "sensitive": true },
+    "host": { "label": "主机地址", "placeholder": "127.0.0.1" },
+    "port": { "label": "端口", "placeholder": "8080" },
+    "requireMention": { "label": "群聊需 @ 回复" },
+    "renderMarkdownToPlain": { "label": "Markdown 转纯文本" }
+  }
+}

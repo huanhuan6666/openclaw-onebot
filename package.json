@@ -1,0 +1,82 @@
+{
+  "name": "@kirigaya/openclaw-onebot",
+  "version": "1.0.3",
+  "description": "OneBot v11 protocol channel plugin for OpenClaw (QQ/Lagrange.Core/go-cqhttp)",
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "author": "LSTM-Kirigaya",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LSTM-Kirigaya/openclaw-onebot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LSTM-Kirigaya/openclaw-onebot/issues"
+  },
+  "homepage": "https://github.com/LSTM-Kirigaya/openclaw-onebot#readme",
+  "keywords": [
+    "openclaw",
+    "onebot",
+    "qq",
+    "lagrange",
+    "cqhttp",
+    "chatbot"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist",
+    "face-map.json",
+    "skills",
+    "openclaw.plugin.json",
+    "README.md"
+  ],
+  "openclaw": {
+    "extensions": ["./dist/index.js"],
+    "skills": ["skills/onebot-ops", "skills/onebot-scripts"],
+    "channel": {
+      "id": "onebot",
+      "label": "OneBot",
+      "selectionLabel": "OneBot (QQ/Lagrange)",
+      "docsPath": "/channels/onebot",
+      "blurb": "OneBot v11 protocol via WebSocket (go-cqhttp, Lagrange.Core, etc.)",
+      "order": 85,
+      "aliases": ["qq", "lagrange", "cqhttp"]
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test:connect": "npx tsx scripts/test-connect.ts",
+    "test:group-welcome": "npx tsx scripts/test-group-welcome.ts",
+    "test:group-increase-handler": "npx tsx scripts/test-group-increase-handler.ts",
+    "prepublishOnly": "npm run build",
+    "pub": "npm run build && npm publish"
+  },
+  "dependencies": {
+    "ws": "^8.17.0",
+    "@clack/prompts": "^1.0.0",
+    "tsx": "^4.0.0",
+    "cron": "^4.4.0",
+    "marked": "^15.0.0",
+    "highlight.js": "^11.10.0"
+  },
+  "optionalDependencies": {
+    "node-html-to-image": "^3.0.0"
+  },
+  "peerDependencies": {
+    "openclaw": "*",
+    "clawdbot": "*"
+  },
+  "peerDependenciesMeta": {
+    "clawdbot": { "optional": true },
+    "openclaw": { "optional": true }
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^22.0.0",
+    "@types/ws": "^8.5.10"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
