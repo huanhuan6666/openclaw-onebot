@@ -18,8 +18,11 @@
 ## 快速入口
 
 - [Win10 + WSL2 + NapCat 自部署教程](docs/win10-wsl2-self-hosted.md)
+- [多人格与 openclaw.json 配置说明](docs/personas-and-openclaw-config.md)
+- [多人格 openclaw.json 示例](examples/openclaw.onebot-multi-persona.example.json)
 - [发布到 GitHub 前检查清单](docs/publish-checklist.md)
 - [语音密钥配置模板](voice-secrets.example.json)
+- [内置 persona 模板](personas/README.md)
 
 ## 项目定位
 

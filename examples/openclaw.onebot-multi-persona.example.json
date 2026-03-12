@@ -1,0 +1,155 @@
+{
+  "channels": {
+    "onebot": {
+      "type": "forward-websocket",
+      "host": "172.30.16.1",
+      "port": 3001,
+      "accessToken": "your_onebot_token_here",
+      "enabled": true,
+      "requireMention": true,
+      "historyLimit": 8,
+      "dmHistoryLimit": 12,
+      "renderMarkdownToPlain": false,
+      "longMessageMode": "normal",
+      "longMessageThreshold": 300,
+      "activityInterject": {
+        "enabled": true,
+        "groupIds": [514242535, 676266126],
+        "mentionActivates": true,
+        "heatActivates": true,
+        "activeWindowMs": 120000,
+        "heatWindowMs": 30000,
+        "heatMessageThreshold": 4,
+        "heatUniqueUsersThreshold": 1,
+        "minGapMs": 5000,
+        "maxRepliesPerWindow": 100,
+        "randomChance": 1,
+        "minMessageLength": 2
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "compaction": {
+        "mode": "safeguard"
+      }
+    },
+    "list": [
+      {
+        "id": "life-normal",
+        "workspace": "/home/you/.openclaw/workspace-life-normal",
+        "agentDir": "/home/you/.openclaw/agents/life-normal/agent",
+        "model": "openai-hk/gemini-3-flash-preview",
+        "skills": ["soul-switch", "tavily"],
+        "tools": {
+          "allow": [
+            "group:fs",
+            "group:runtime",
+            "web_fetch",
+            "pdf",
+            "session_status",
+            "onebot_send_image",
+            "onebot_upload_file",
+            "onebot_get_group_msg_history",
+            "onebot_delete_msg",
+            "onebot_send_mface"
+          ]
+        }
+      },
+      {
+        "id": "life-gentle",
+        "workspace": "/home/you/.openclaw/workspace-life-gentle",
+        "agentDir": "/home/you/.openclaw/agents/life-gentle/agent",
+        "model": "openai-hk/gemini-3-flash-preview",
+        "skills": ["soul-switch", "tavily"],
+        "tools": {
+          "allow": [
+            "group:fs",
+            "group:runtime",
+            "web_fetch",
+            "pdf",
+            "session_status",
+            "onebot_send_image",
+            "onebot_upload_file",
+            "onebot_get_group_msg_history",
+            "onebot_delete_msg",
+            "onebot_send_mface"
+          ]
+        }
+      },
+      {
+        "id": "life-laoge",
+        "workspace": "/home/you/.openclaw/workspace-life-laoge",
+        "agentDir": "/home/you/.openclaw/agents/life-laoge/agent",
+        "model": "openai-hk/gemini-3-flash-preview",
+        "skills": ["soul-switch", "tavily"],
+        "tools": {
+          "allow": [
+            "group:fs",
+            "group:runtime",
+            "web_fetch",
+            "pdf",
+            "session_status",
+            "onebot_send_image",
+            "onebot_upload_file",
+            "onebot_get_group_msg_history",
+            "onebot_delete_msg",
+            "onebot_send_mface"
+          ]
+        }
+      },
+      {
+        "id": "life-lezige",
+        "workspace": "/home/you/.openclaw/workspace-life-lezige",
+        "agentDir": "/home/you/.openclaw/agents/life-lezige/agent",
+        "model": "openai-hk/gemini-3-flash-preview",
+        "skills": ["soul-switch", "tavily"],
+        "tools": {
+          "allow": [
+            "group:fs",
+            "group:runtime",
+            "web_fetch",
+            "pdf",
+            "session_status",
+            "onebot_send_image",
+            "onebot_upload_file",
+            "onebot_get_group_msg_history",
+            "onebot_delete_msg",
+            "onebot_send_mface"
+          ]
+        }
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "agentId": "life-gentle",
+      "match": {
+        "channel": "onebot",
+        "accountId": "default",
+        "peer": {
+          "kind": "group",
+          "id": "514242535"
+        }
+      }
+    },
+    {
+      "agentId": "life-lezige",
+      "match": {
+        "channel": "onebot",
+        "accountId": "default",
+        "peer": {
+          "kind": "group",
+          "id": "676266126"
+        }
+      }
+    },
+    {
+      "agentId": "life-normal",
+      "match": {
+        "channel": "onebot",
+        "accountId": "default"
+      }
+    }
+  ]
+}
