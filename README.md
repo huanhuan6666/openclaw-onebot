@@ -12,6 +12,10 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen?style=flat-square)](https://nodejs.org)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Plugin-9cf?style=flat-square)](https://openclaw.ai)
 
+<img src="docs/mface-demo.png" width="360" alt="表情包发送效果">
+
+<sub>机器人在群聊中发送收藏表情包 + emoji reaction 的实际效果</sub>
+
 </div>
 
 ---
@@ -27,7 +31,8 @@
 | **人格专属音色** | 不同人格绑定不同 voice profile，Fish Audio s2-pro 支持 LLM 自动语气标注 |
 | **群聊上下文承接** | 50 条 pending buffer，bot 上次回复后群里聊了什么都会带给 agent |
 | **群聊活跃参与** | 热度检测自动插话，不必每条都 @ |
-| **QQ 表情生态** | 黄脸自动渲染、mface 收藏表情缓存与重发、emoji reaction |
+| **QQ 表情包发送** | 支持发送收藏表情包 (mface)，维护最近 mface 缓存，按 index 重发；表情包编号与内容的映射需在 SOUL.md 中根据账号实际收藏手动配置 |
+| **QQ 黄脸 & reaction** | 文本中的 `[表情:微笑(14)]` 自动渲染为 QQ 标准黄脸；支持 emoji reaction（消息回应） |
 | **图片上下文** | 群聊先发图后追问时，recent context 自动补图片描述 |
 | **私聊输入状态** | 私聊显示"正在输入中" |
 
