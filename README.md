@@ -1,11 +1,8 @@
 <div align="center">
 
-# openclaw-onebot（增强版）
+# openclaw-onebot
 
-基于 [LSTM-Kirigaya/openclaw-onebot](https://github.com/LSTM-Kirigaya/openclaw-onebot) 的二次开发增强版。
-
-上游项目提供了完整的 OneBot v11 / QQ 接入能力（连接、消息收发、配置向导等）。
-**本仓库在此基础上增加了以下功能**：
+基于 [LSTM-Kirigaya/openclaw-onebot](https://github.com/LSTM-Kirigaya/openclaw-onebot) 改的，加了多人格切换、语音聊天、群聊上下文和 QQ 表情包之类的东西。
 
 [![GitHub stars](https://img.shields.io/github/stars/huanhuan6666/openclaw-onebot?style=flat-square)](https://github.com/huanhuan6666/openclaw-onebot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -14,16 +11,16 @@
 
 <img src="docs/mface-demo.png" width="360" alt="表情包发送效果">
 
-<sub>机器人在群聊中发送收藏表情包 + emoji reaction 的实际效果</sub>
+<sub>机器人在群聊中发送收藏表情包 + emoji reaction</sub>
 
 </div>
 
 ---
 
-## 我们增加了什么
+## 改了些啥
 
-| 增强方向 | 具体内容 |
-|---------|---------|
+| 功能 | 说明 |
+|------|------|
 | **多人格系统** | 4 个预设人格 (`life-normal / gentle / laoge / lezige`)，每个独立 agent + workspace + session，按群/私聊路由，记忆隔离 |
 | **一键人格部署** | `openclaw onebot bootstrap-personas` 自动创建 workspace、复制 SOUL.md、写入 openclaw.json |
 | **自然语言切人格** | 除 `/switch laoge` 外，支持 "切换成老哥" "你有哪些人格" 等中文意图识别 |
