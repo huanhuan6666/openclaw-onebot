@@ -1,8 +1,6 @@
 <div align="center">
 
-# openclaw-onebot
-
-基于 [LSTM-Kirigaya/openclaw-onebot](https://github.com/LSTM-Kirigaya/openclaw-onebot) 改的，加了多人格切换、语音聊天、群聊上下文和 QQ 表情包之类的东西。
+基于 [LSTM-Kirigaya/openclaw-onebot](https://github.com/LSTM-Kirigaya/openclaw-onebot) 二次开发，增加了多人格切换、语音聊天、群聊上下文承接、QQ 表情包发送等功能。
 
 [![GitHub stars](https://img.shields.io/github/stars/huanhuan6666/openclaw-onebot?style=flat-square)](https://github.com/huanhuan6666/openclaw-onebot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -14,10 +12,6 @@
 <sub>机器人在群聊中发送收藏表情包 + emoji reaction</sub>
 
 </div>
-
----
-
-## 改了些啥
 
 | 功能 | 说明 |
 |------|------|
