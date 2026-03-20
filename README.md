@@ -1,5 +1,9 @@
 <div align="center">
 
+# 🤖 openclaw-onebot
+
+**让 AI 自然融入 QQ 群聊 — 基于 OpenClaw + OneBot 的多人格智能体**
+
 基于 [LSTM-Kirigaya/openclaw-onebot](https://github.com/LSTM-Kirigaya/openclaw-onebot) 二次开发，增加了多人格切换、语音聊天、群聊上下文承接、QQ 表情包发送等功能。
 
 [![GitHub stars](https://img.shields.io/github/stars/huanhuan6666/openclaw-onebot?style=flat-square)](https://github.com/huanhuan6666/openclaw-onebot)
@@ -7,31 +11,43 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen?style=flat-square)](https://nodejs.org)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Plugin-9cf?style=flat-square)](https://openclaw.ai)
 
+<br>
+
+<a href="https://www.bilibili.com/video/BV1JkwJzVEdL/">
+  <img src="https://img.shields.io/badge/📺_演示视频-BiliBili-fb7299?style=for-the-badge&logo=bilibili&logoColor=white" alt="Bilibili 演示视频">
+</a>
+
+<br><br>
+
 <img src="docs/mface-demo.png" width="360" alt="表情包发送效果">
 
 <sub>机器人在群聊中发送收藏表情包 + emoji reaction</sub>
 
 </div>
 
+---
+
+## ✨ 功能一览
+
 | 功能 | 说明 |
-|------|------|
-| **多人格系统** | 4 个预设人格 (`life-normal / gentle / laoge / lezige`)，每个独立 agent + workspace + session，按群/私聊路由，记忆隔离 |
-| **一键人格部署** | `openclaw onebot bootstrap-personas` 自动创建 workspace、复制 SOUL.md、写入 openclaw.json |
-| **自然语言切人格** | 除 `/switch laoge` 外，支持 "切换成老哥" "你有哪些人格" 等中文意图识别 |
-| **语音聊天** | 会话级 `/voice on\|off\|inbound`，支持 4 种 TTS 引擎 (Edge / OpenAI / ElevenLabs / Fish Audio) |
-| **人格专属音色** | 不同人格绑定不同 voice profile，Fish Audio s2-pro 支持 LLM 自动语气标注 |
-| **群聊上下文承接** | 50 条 pending buffer，bot 上次回复后群里聊了什么都会带给 agent |
-| **群聊活跃参与** | 热度检测自动插话，不必每条都 @ |
-| **QQ 表情包发送** | 支持发送收藏表情包 (mface)，维护最近 mface 缓存，按 index 重发；表情包编号与内容的映射需在 SOUL.md 中根据账号实际收藏手动配置 |
-| **QQ 黄脸 & reaction** | 文本中的 `[表情:微笑(14)]` 自动渲染为 QQ 标准黄脸；支持 emoji reaction（消息回应） |
-| **图片上下文** | 群聊先发图后追问时，recent context 自动补图片描述 |
-| **私聊输入状态** | 私聊显示"正在输入中" |
+|:-----|:-----|
+| 🎭 **多人格系统** | 4 个预设人格 (`life-normal / gentle / laoge / lezige`)，每个独立 agent + workspace + session，按群/私聊路由，记忆隔离 |
+| 🚀 **一键人格部署** | `openclaw onebot bootstrap-personas` 自动创建 workspace、复制 SOUL.md、写入 openclaw.json |
+| 💬 **自然语言切人格** | 除 `/switch laoge` 外，支持 "切换成老哥" "你有哪些人格" 等中文意图识别 |
+| 🎙️ **语音聊天** | 会话级 `/voice on\|off\|inbound`，支持 4 种 TTS 引擎 (Edge / OpenAI / ElevenLabs / Fish Audio) |
+| 🔊 **人格专属音色** | 不同人格绑定不同 voice profile，Fish Audio s2-pro 支持 LLM 自动语气标注 |
+| 📜 **群聊上下文承接** | 50 条 pending buffer，bot 上次回复后群里聊了什么都会带给 agent |
+| 🔥 **群聊活跃参与** | 热度检测自动插话，不必每条都 @ |
+| 😄 **QQ 表情包发送** | 支持发送收藏表情包 (mface)，维护最近 mface 缓存，按 index 重发；表情包编号与内容的映射需在 SOUL.md 中根据账号实际收藏手动配置 |
+| 😊 **QQ 黄脸 & reaction** | 文本中的 `[表情:微笑(14)]` 自动渲染为 QQ 标准黄脸；支持 emoji reaction（消息回应） |
+| 🖼️ **图片上下文** | 群聊先发图后追问时，recent context 自动补图片描述 |
+| ⌨️ **私聊输入状态** | 私聊显示"正在输入中" |
 
 > 如果你只需要基础的 OneBot 接入能力，请直接使用[上游项目](https://github.com/LSTM-Kirigaya/openclaw-onebot)。
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ### 前置条件
 
@@ -72,12 +88,12 @@ openclaw gateway restart
 
 ---
 
-## 人格系统
+## 🎭 人格系统
 
 `bootstrap-personas` 会自动创建 4 个人格：
 
 | 人格 | Agent ID | 风格 |
-|------|----------|------|
+|:-----|:---------|:-----|
 | 安 | `life-normal` | 温暖日常，网络用语自然 |
 | Gentle | `life-gentle` | 理性冷静，标准普通话 |
 | 老哥 | `life-laoge` | 孙吧/康吧风格，犀利毒舌 |
@@ -108,7 +124,7 @@ openclaw gateway restart
 
 ---
 
-## 语音配置
+## 🎙️ 语音配置
 
 语音功能需要额外配置音色和 API 密钥：
 
@@ -119,10 +135,10 @@ openclaw gateway restart
 
 ---
 
-## 连接模式
+## 🔌 连接模式
 
 | 类型 | 说明 |
-|------|------|
+|:-----|:-----|
 | `forward-websocket` | 插件主动连接 NapCat |
 | `backward-websocket` | NapCat 反连插件 |
 
@@ -130,10 +146,10 @@ openclaw gateway restart
 
 ---
 
-## 文档
+## 📖 文档
 
 | 文档 | 内容 |
-|------|------|
+|:-----|:-----|
 | [多人格配置详解](docs/personas-and-openclaw-config.md) | agents、bindings、activityInterject 完整说明 |
 | [Win10 + WSL2 自部署](docs/win10-wsl2-self-hosted.md) | 从零开始的完整部署教程 |
 | [人格模板说明](personas/README.md) | 4 个 SOUL.md 的设计思路 |
@@ -142,7 +158,7 @@ openclaw gateway restart
 
 ---
 
-## 架构
+## 🏗️ 架构
 
 ```
 QQ 真实账号 ←→ NapCat / OneBot ←→ openclaw-onebot ←→ OpenClaw Core (LLM/Skills/Tools)
@@ -155,7 +171,7 @@ QQ 真实账号 ←→ NapCat / OneBot ←→ openclaw-onebot ←→ OpenClaw Co
 
 ---
 
-## 已知限制
+## ⚠️ 已知限制
 
 - 文件理解尚未完整接入
 - 视频消息发送暂无专门实现
@@ -163,7 +179,7 @@ QQ 真实账号 ←→ NapCat / OneBot ←→ openclaw-onebot ←→ OpenClaw Co
 
 ---
 
-## 安全提示
+## 🔒 安全提示
 
 以下文件包含密钥或运行时数据，**不要提交到公开仓库**：
 
@@ -171,7 +187,7 @@ QQ 真实账号 ←→ NapCat / OneBot ←→ openclaw-onebot ←→ OpenClaw Co
 
 ---
 
-## 参考
+## 🔗 参考
 
 - 上游项目：[LSTM-Kirigaya/openclaw-onebot](https://github.com/LSTM-Kirigaya/openclaw-onebot)
 - [OneBot 11 协议](https://github.com/botuniverse/onebot-11) · [NapCatQQ](https://github.com/NapNeko/NapCatQQ) · [OpenClaw](https://openclaw.ai)
